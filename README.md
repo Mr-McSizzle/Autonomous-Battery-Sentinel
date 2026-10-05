@@ -6,31 +6,24 @@ Autonomous Battery Sentinel explores an end-to-end architecture that moves from 
 
 > Engineering prototype. Hardware fail-safe behavior and competition compliance require validation on the actual vehicle and rule set; this repository alone does not establish production or safety certification.
 
+## Architecture map
+
+```mermaid
+flowchart TD
+    A[CAN telemetry / simulation] --> B[Rule + boundary checks]
+    B --> C[Signal analysis]
+    C --> D[VAE + Isolation Forest]
+    D --> E[Online triage]
+    E --> F[Degradation forecasting]
+    F --> G[Model optimization]
+    G --> H[Edge deployment simulation]
+    H --> I[VCU / CAN integration]
+    I --> J[Monte Carlo validation]
+```
+
 ## Pipeline
 
-The repository's `main.py` orchestrates the following stages:
-
-```text
-CAN data simulation
-      ↓
-rule / boundary checks
-      ↓
-advanced signal analysis
-      ↓
-VAE + Isolation Forest anomaly modeling
-      ↓
-online triage
-      ↓
-degradation forecasting
-      ↓
-model optimization
-      ↓
-edge-deployment simulation
-      ↓
-VCU / CAN integration layer
-      ↓
-Monte Carlo validation
-```
+The repository's `main.py` orchestrates the same stages shown above, allowing them to run independently or as a full sequence.
 
 ## Techniques represented in the codebase
 
